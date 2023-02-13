@@ -285,7 +285,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
       builder: (context, data, wt) {
         return IgnorePointer(
           ignoring: !widget.enabled,
-          child: InkWell(
+          child: GestureDetector(
             onTap: () => _selectSearchMode(),
             child: _formField(),
           ),
@@ -316,7 +316,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
             Flexible(
               child: Text(
                 _selectedItemAsString(item),
-                style: Theme.of(context).textTheme.subtitle2,
+                style: Theme.of(context).textTheme.titleSmall,
                 overflow: TextOverflow.ellipsis,
               ),
             ),
@@ -646,7 +646,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
     // Here we get the render object of our physical button, later to get its size & position
     final popupButtonObject = context.findRenderObject() as RenderBox;
     // Get the render object of the overlay used in `Navigator` / `MaterialApp`, i.e. screen size reference
-    var overlay = Overlay.of(context)!.context.findRenderObject() as RenderBox;
+    var overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
 
     return showCustomMenu<T>(
       menuModeProps: widget.popupProps.menuProps,
